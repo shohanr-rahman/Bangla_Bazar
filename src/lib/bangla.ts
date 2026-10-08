@@ -50,3 +50,31 @@ export function banglaToday(): string {
 
   return `${weekday}, ${toBn(get("day"))} ${month}, ${toBn(get("year"))}`;
 }
+// "প্রতি কেজি" থেকে শুধু "কেজি"
+export const shortUnit = (unit: string) =>
+  unitLabel(unit).replace("প্রতি ", "");
+
+// দাম বাড়া/কমার badge: সবুজ ▲, লাল ▼, ধূসর —
+export function changeInfo(change: { dir: string; pct: number }) {
+  const pct = toBn(Math.abs(change.pct).toFixed(1));
+
+  if (change.dir === "up" && change.pct !== 0) {
+    return {
+      text: `▲ ${pct}%`,
+      className: "text-success",
+      badgeClass: "bg-success/15 text-success",
+    };
+  }
+  if (change.dir === "down" && change.pct !== 0) {
+    return {
+      text: `▼ ${pct}%`,
+      className: "text-error",
+      badgeClass: "bg-error/15 text-error",
+    };
+  }
+  return {
+    text: `—${toBn("0.0")}%`,
+    className: "text-gray-500",
+    badgeClass: "bg-gray-200 text-gray-500",
+  };
+}

@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Hind_Siliguri } from "next/font/google";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import PriceTicker from "@/components/PriceTicker";
 import ToasterProvider from "@/components/ToasterProvider";
 import "./globals.css";
 
@@ -21,8 +24,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="bn" data-theme="bazardor" className={hind.variable}>
-      <body className="min-h-screen bg-base-100 text-base-content antialiased">
-        {children}
+      <body className="flex min-h-screen flex-col bg-base-100 text-base-content antialiased">
+        <Navbar />
+        <PriceTicker />
+        <div className="flex-1">{children}</div>
+        <Footer />
         <ToasterProvider />
       </body>
     </html>
