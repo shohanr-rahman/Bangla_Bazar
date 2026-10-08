@@ -1,18 +1,32 @@
-import { getCategories, getProducts } from "@/lib/api";
+import Hero from "@/components/Hero";
+import ProductSection from "@/components/ProductSection";
+import { getProducts } from "@/lib/api";
 import { toBn } from "@/lib/bangla";
 
 export default async function Home() {
-  const [products, categories] = await Promise.all([
-    getProducts(),
-    getCategories(),
-  ]);
+  const products = await getProducts();
+
+  const risers = products
+    .filter((p) => p.change.dir === "up" && p.change.pct > 0)
+    .sort((a, b) => b.change.pct - a.change.pct)
+    .slice(0, 6);
+
+  const fallers = products
+    .filter((p) => p.change.dir === "down" && p.change.pct > 0)
+    .sort((a, b) => b.change.pct - a.change.pct)
+    .slice(0, 6);
 
   return (
-    <div className="mx-auto max-w-6xl p-6">
-      <h1 className="text-2xl font-bold text-primary">🛒 বাজার দর</h1>
-      <p className="mt-4">
-        {toBn(products.length)}টি পণ্য, {toBn(categories.length)}টি ক্যাটাগরি
-      </p>
-    </div>
+    <>
+      <Hero />
+      <ProductSection title="আজ দাম বেড়েছে ▲" products={risers} />
+      <ProductSection title="আজ দাম কমেছে ▼" products={fallers} />
+      <ProductSection
+        id="সব-পণ্য"
+        title="সব পণ্য"
+        subtitle={`মোট ${toBn(products.length)}টি পণ্য দেখানো হচ্ছে`}
+        products={products}
+      />
+    </>
   );
 }
