@@ -3,11 +3,15 @@
 import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
 
-export default function SocialButtons() {
+export default function SocialButtons({
+  callbackURL = "/",
+}: {
+  callbackURL?: string;
+}) {
   async function handle(provider: "google" | "github") {
     const { error } = await authClient.signIn.social({
       provider,
-      callbackURL: "/",
+      callbackURL,
     });
     if (error) toast.error("সোশ্যাল লগইন করা যায়নি, আবার চেষ্টা করুন");
   }
