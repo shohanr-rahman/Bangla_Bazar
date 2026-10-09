@@ -7,13 +7,13 @@ export default async function Home() {
   const products = await getProducts();
 
   const risers = products
-    .filter((p) => p.change.dir === "up" && p.change.pct > 0)
-    .sort((a, b) => b.change.pct - a.change.pct)
+    .filter((p) => p.change.dir === "up" && p.change.pct !== 0)
+    .sort((a, b) => Math.abs(b.change.pct) - Math.abs(a.change.pct))
     .slice(0, 6);
 
   const fallers = products
-    .filter((p) => p.change.dir === "down" && p.change.pct > 0)
-    .sort((a, b) => b.change.pct - a.change.pct)
+    .filter((p) => p.change.dir === "down" && p.change.pct !== 0)
+    .sort((a, b) => Math.abs(b.change.pct) - Math.abs(a.change.pct))
     .slice(0, 6);
 
   return (
