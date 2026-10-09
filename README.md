@@ -1,8 +1,9 @@
-# 🛒 বাজার দর (BazarDor)
+# 🛒 বাংলা বাজার
+
 
 প্রয়োজনীয় পণ্যের আজকের দাম এক নজরে। চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার বাজারভিত্তিক দাম, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
 
-🔗 **Live Link:** https://your-site.vercel.app
+
 
 ## ✨ Features
 
@@ -26,14 +27,7 @@
 | react-hot-toast | Toast বার্তা |
 | Vercel | Deployment |
 
-## 🚀 Run Locally
 
-```bash
-git clone https://github.com/shohanr-rahman/Bangla_Bazar.git
-cd Bangla_Bazar
-npm install
-npm run dev
-```
 
 
 
@@ -41,11 +35,3 @@ npm run dev
 
 `/products`, `/products?category=chal`, `/products/:id`, `/categories`, `/categories/:slug`
 
-## 📂 Folder Structure
-
-```
-src
-├── app          # পাতা ও route (home, category, product, signin, signup, profile)
-├── components   # Navbar, ProductCard, Hero ইত্যাদি
-└── lib          # API, auth ও বাংলা সংখ্যা/তারিখের helper
-```
