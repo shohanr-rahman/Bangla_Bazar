@@ -16,16 +16,18 @@ export default async function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-base-300 bg-base-100/95 backdrop-blur">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="flex items-center justify-between py-3">
-          <Link href="/" className="leading-tight">
-            <span className="text-xl font-bold text-primary sm:text-2xl">
+        <div className="flex items-center justify-between gap-2 py-3">
+          <Link href="/" className="min-w-0 leading-tight">
+            <span className="block whitespace-nowrap text-xl font-bold text-primary sm:text-2xl">
               🛒 বাজার দর
             </span>
-            <span className="block text-xs opacity-70 sm:text-sm">
+            <span className="block truncate text-xs opacity-70 sm:text-sm">
               {banglaToday()}
             </span>
           </Link>
-          <AuthButtons />
+          <div className="shrink-0">
+            <AuthButtons />
+          </div>
         </div>
         <NavLinks categories={categories} />
       </div>

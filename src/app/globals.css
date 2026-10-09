@@ -56,3 +56,19 @@ body {
 .marquee:hover .marquee-track {
   animation-play-state: paused;
 }
+
+
+
+/* Splash screen-এর progress bar (৩ সেকেন্ডে ভরে) */
+@keyframes splash-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.splash-bar {
+  animation: splash-progress 3s linear forwards;
+}

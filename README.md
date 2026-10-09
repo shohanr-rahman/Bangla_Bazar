@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 বাজার দর (BazarDor)
 
-## Getting Started
+প্রয়োজনীয় পণ্যের আজকের দাম এক নজরে। চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার বাজারভিত্তিক দাম, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
 
-First, run the development server:
+🔗 **Live Link:** https://your-site.vercel.app
+
+## ✨ Features
+
+1. 📈 **দামের ওঠানামা:** আজ কোন ৬টি পণ্যের দাম সবচেয়ে বেশি বেড়েছে বা কমেছে তা আলাদা section-এ দেখা যায়।
+2. 🎞️ **Live Price Ticker:** পণ্যের নাম, দাম ও ▲/▼ শতাংশসহ অনন্ত চলমান ticker strip।
+3. 🗂️ **ক্যাটাগরি পাতা ও সাজান:** ৮টি ক্যাটাগরি, দাম অনুযায়ী (কম→বেশি, বেশি→কম) সাজানো যায়। বাংলা সংখ্যার বদলে আসল সংখ্যা ধরে sort হয়।
+4. 🏪 **বাজারভিত্তিক বিস্তারিত:** প্রতিটি পণ্যের ১২টি বাজারের সর্বনিম্ন, সর্বাধিক ও গড় দামের table (Protected Route)।
+5. 🔐 **Authentication:** BetterAuth দিয়ে Email/Password, Google ও GitHub login, toast বার্তাসহ।
+6. 👤 **প্রোফাইল ও তথ্য আপডেট:** ব্যবহারকারীর নাম বদলানো যায়।
+7. 📱 **সম্পূর্ণ Responsive:** মোবাইল, ট্যাবলেট ও ডেস্কটপে সঠিকভাবে চলে, Skeleton loading ও ৪০৪ পাতাসহ।
+
+## 🛠️ Technologies Used
+
+| প্রযুক্তি | কাজ |
+|---|---|
+| Next.js (App Router) | UI ও routing |
+| TypeScript | টাইপ নিরাপত্তা |
+| Tailwind CSS + DaisyUI | Styling ও responsive design |
+| BetterAuth | Authentication |
+| MongoDB Atlas | ব্যবহারকারীর তথ্য সংরক্ষণ |
+| react-hot-toast | Toast বার্তা |
+| Vercel | Deployment |
+
+## 🚀 Run Locally
 
 ```bash
+git clone https://github.com/shohanr-rahman/Bangla_Bazar.git
+cd Bangla_Bazar
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔌 API
 
-## Learn More
+`/products`, `/products?category=chal`, `/products/:id`, `/categories`, `/categories/:slug`
 
-To learn more about Next.js, take a look at the following resources:
+## 📂 Folder Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src
+├── app          # পাতা ও route (home, category, product, signin, signup, profile)
+├── components   # Navbar, ProductCard, Hero ইত্যাদি
+└── lib          # API, auth ও বাংলা সংখ্যা/তারিখের helper
+```

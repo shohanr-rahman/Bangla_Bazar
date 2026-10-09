@@ -49,10 +49,20 @@ export default function AuthButtons() {
       <div
         tabIndex={0}
         role="button"
-        className="btn btn-circle btn-primary btn-sm text-base sm:btn-md"
+        className="btn btn-circle btn-primary btn-sm overflow-hidden p-0 text-base sm:btn-md"
         aria-label="প্রোফাইল মেনু"
       >
-        {initial}
+        {user.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={user.image}
+            alt={user.name}
+            referrerPolicy="no-referrer"
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          initial
+        )}
       </div>
       <ul
         tabIndex={0}
