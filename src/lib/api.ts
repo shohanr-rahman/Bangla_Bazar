@@ -6,17 +6,22 @@ const BASES = [
 ];
 
 // প্রথম URL কাজ না করলে দ্বিতীয়টা চেষ্টা করবে। 404 হলে null ফেরত দেবে।
+// উত্তর ৫ মিনিট মনে রাখে, তাই বারবার API-তে অনুরোধ যায় না।
 async function request<T>(path: string): Promise<T | null> {
+  let lastError = "";
+
   for (const base of BASES) {
     try {
-      const res = await fetch(base + path, { cache: "no-store" });
+      const res = await fetch(base + path, { next: { revalidate: 300 } });
       if (res.status === 404) return null;
       if (res.ok) return (await res.json()) as T;
-    } catch {
-      // পরের URL-এ চেষ্টা করবে
+      lastError = `${base} → ${res.status}`;
+    } catch (e) {
+      lastError = `${base} → ${(e as Error).message}`;
     }
   }
-  throw new Error("API এখন পাওয়া যাচ্ছে না");
+
+  throw new Error(`API এখন পাওয়া যাচ্ছে না (${lastError})`);
 }
 
 export async function getProducts(category?: string): Promise<Product[]> {

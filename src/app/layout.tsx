@@ -7,6 +7,9 @@ import SplashScreen from "@/components/SplashScreen";
 import ToasterProvider from "@/components/ToasterProvider";
 import "./globals.css";
 
+// build-এর সময় API লাগবে না, প্রতিবার visitor আসার সময় পাতা বানাবে
+export const dynamic = "force-dynamic";
+
 const hind = Hind_Siliguri({
   subsets: ["bengali", "latin"],
   weight: ["400", "500", "600", "700"],
